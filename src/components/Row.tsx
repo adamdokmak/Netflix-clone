@@ -37,7 +37,7 @@ export default function Row({title, movies}: Props) {
                                  onClick={() => handleClick('left')}/>
 
                 <div ref={rowRef}
-                     className='flex items-center scrollbar-hide space-x-0.5 overflow-x-scroll md:space-x-2.5'>
+                     className='flex items-center scrollbar-hide space-x-3 overflow-x-scroll md:space-x-2.5'>
                     {movies.map(movie => <Thumbnail key={movie.id} movie={movie}/>)}
                 </div>
 

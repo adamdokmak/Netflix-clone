@@ -60,7 +60,7 @@ export default async function Home() {
         to-[#010511] lg:h-[140vh]">
 
             <Header/>
-            <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-16'>
+            <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-10'>
                 <Banner netflixOriginals={getDataByFilters.netflixOriginals}/>
                 <section className='md:space-y-24'>
                     <Row title="Trending Now" movies={getDataByFilters.trendingNow}/>
