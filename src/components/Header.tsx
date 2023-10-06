@@ -2,9 +2,14 @@
 import {MagnifyingGlassIcon as SearchIcon, BellIcon} from '@heroicons/react/24/solid'
 import Link from 'next/link'
 import {useEffect, useState} from "react";
+import UseAuth from "@/hooks/UseAuth";
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
+    const {logout, loading} = UseAuth()
+
+    if (loading) return null
+
     useEffect(() => {
         const scroll = () => {
             window.scrollY > 0? setIsScrolled(true) : setIsScrolled(false)
@@ -36,7 +41,7 @@ export default function Header() {
                 <SearchIcon className='hidden h-6 w-6 sm:inline'/>
                 <p className='hidden lg:inline'>Kids</p>
                 <BellIcon className='h-6 w-6'/>
-                <Link href='/account'>
+                <Link href='/account' onClick={logout}>
                     <img
                         src="https://rb.gy/g1pwyx"
                         alt=""
