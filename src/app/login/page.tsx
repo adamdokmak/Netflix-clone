@@ -3,7 +3,7 @@ import {Metadata} from "next";
 import Image from "next/image";
 import {useState} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
-import UseAuth from "@/hooks/UseAuth";
+import useAuth from "@/hooks/useAuth";
 
 const metadata: Metadata = {
     title: 'Login - Netflix',
@@ -23,7 +23,7 @@ export default function page() {
         formState: {errors},
     } = useForm<Inputs>()
 
-    const {signIn, signUp} = UseAuth()
+    const {signIn, signUp} = useAuth()
     const onSubmit: SubmitHandler<Inputs> = async ({email,password}) => {
         if(login) {
             await signIn(email, password)

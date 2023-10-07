@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth'
 
 import {useRouter} from 'next/navigation'
-import {createContext, useContext, useEffect, useMemo, useState} from 'react'
+import {createContext, ReactNode, useContext, useEffect, useMemo, useState} from 'react'
 import {auth} from '@/app/firebase/init'
 
 interface IAuth {
@@ -33,7 +33,7 @@ const AuthContext = createContext<IAuth>({
 })
 
 interface AuthProviderProps {
-    children: React.ReactNode
+    children: ReactNode
 }
 
 export const AuthProvider = ({children}: AuthProviderProps) => {
