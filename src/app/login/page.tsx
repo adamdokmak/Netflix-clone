@@ -14,7 +14,7 @@ interface Inputs {
     password: string,
 }
 
-export default function page() {
+export default function Page() {
     const [login, setLogin] = useState(false)
     const {
         register,
