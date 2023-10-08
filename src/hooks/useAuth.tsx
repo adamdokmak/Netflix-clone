@@ -48,21 +48,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState(null);
   const [loginLoading, setLoginLoading] = useRecoilState(errorState);
-  const [initialLoading, setInitialLoading] = useState(true)
+  const [initialLoading, setInitialLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        // router.push("/");
+        router.push("/");
         setLoading(false);
       } else {
         setUser(null);
         setLoading(true);
         router.push("/login");
       }
-      setInitialLoading(false)
+      setInitialLoading(false);
     });
   }, [auth]);
 
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = async () => {
-    setLoading(true)
+    setLoading(true);
     setLoginLoading(false);
     signOut(auth)
       .then(() => {
@@ -120,7 +120,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={memoedValue}>
-      {initialLoading ? <AuthPage /> : children}
+      {initialLoading && <AuthPage />}
+      {!initialLoading && children}
     </AuthContext.Provider>
   );
 };

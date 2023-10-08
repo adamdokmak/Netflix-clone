@@ -33,6 +33,7 @@ export default function Banner({ netflixOriginals }: Props) {
           src={`${baseURL}${movie?.backdrop_path || movie?.poster_path}`}
           layout="fill"
           objectFit="cover"
+          loading='lazy'
           alt="banner img"
         />
       </div>
