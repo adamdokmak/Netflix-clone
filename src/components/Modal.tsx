@@ -1,7 +1,7 @@
 import MuiModal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
 import { modalState, movieState } from "@/atoms/modalAtom";
-import { useRecoilState } from "recoil";
+import { RecoilLoadable, useRecoilState } from "recoil";
 import {
   HandThumbUpIcon,
   PlusIcon,
@@ -12,6 +12,7 @@ import {
 import { Element, Genre } from "@/utils/typings";
 import ReactPlayer from "react-player/lazy";
 import { FaPlay } from "react-icons/fa";
+import loading = RecoilLoadable.loading;
 
 export default function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -19,6 +20,7 @@ export default function Modal() {
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const [muted, setMuted] = useState(true);
+  const [videoLoading, setVideoLoading] = useState(true);
 
   useEffect(() => {
     if (!movie) return;
@@ -48,6 +50,7 @@ export default function Modal() {
 
   const handleClose = () => {
     setShowModal(false);
+    setVideoLoading(true)
   };
 
   function semanticYear() {
@@ -57,7 +60,7 @@ export default function Modal() {
 
   function semanticOGLang() {
     let language = movie?.original_language;
-    return language && language.toUpperCase()
+    return language && language.toUpperCase();
   }
 
   return (
@@ -74,16 +77,21 @@ export default function Modal() {
         >
           <XMarkIcon className="h-6 w-6" />
         </button>
-        <div className="relative pt-[46.25%]">
-          <ReactPlayer
-              className='scale-[1.35] -z-10'
-            url={`https://www.youtube-nocookie.com/watch?v=${trailer}`}
-            width="100%"
-            height="100%"
-            style={{ position: "absolute", top: "0", left: "0" }}
-            playing
-            muted={muted}
-          />
+
+        <div className="relative pt-[46.25%] overflow-hidden">
+          {videoLoading && <div className="absolute top-0 left-0 w-full h-full bg-[#181818]"></div>}
+            <ReactPlayer
+              className="scale-[1.35] -z-10 overflow-hidden"
+              url={`https://www.youtube-nocookie.com/watch?v=${trailer}`}
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", top: "0", left: "0" }}
+              playing
+              loop
+              onReady={() => setVideoLoading(false)}
+              muted={muted}
+            />
+
           <div
             className="absolute bottom-10 flex w-full items-center justify-between
                         px-10"
@@ -114,7 +122,10 @@ export default function Modal() {
         </div>
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
           <div className="space-y-6 text-lg">
-            <div className="flex items-center space-x-2 text-sm">
+            <div className="flex items-center content-center space-x-2 text-sm">
+              <h1 className="font-bold text-lg">
+                {movie?.title || movie?.name || movie?.original_name}
+              </h1>
               <p className="font-semibold text-green-400">
                 {(movie?.vote_average * 10).toFixed(0)}% Match
               </p>
