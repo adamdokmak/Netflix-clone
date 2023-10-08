@@ -5,6 +5,8 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import useAuth from "@/hooks/useAuth";
 import { ImSpinner2 } from "react-icons/im";
+import {useRecoilState} from "recoil";
+import {errorState} from "@/atoms/loginErrorAtom";
 
 const metadata: Metadata = {
   title: "Login - Netflix",
@@ -17,7 +19,8 @@ interface Inputs {
 
 export default function Page() {
   const [login, setLogin] = useState(false);
-  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginLoading, setLoginLoading] = useRecoilState(errorState)
+
   const {
     register,
     handleSubmit,
@@ -28,15 +31,11 @@ export default function Page() {
   const { signIn, signUp } = useAuth();
   const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
     setLoginLoading(true);
-    try {
       if (login) {
         await signIn(email, password);
       } else {
         await signUp(email, password);
       }
-    } finally {
-      setLoginLoading(false);
-    }
   };
   return (
     <div
