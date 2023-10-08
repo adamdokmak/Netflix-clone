@@ -2,7 +2,6 @@ import { Movie } from "@/utils/typings";
 import Image from "next/image";
 import { useRecoilState } from "recoil";
 import { modalState, movieState } from "@/atoms/modalAtom";
-import {useEffect, useRef, useState} from "react";
 
 interface Props {
   // movie: Movie | DocumentData
