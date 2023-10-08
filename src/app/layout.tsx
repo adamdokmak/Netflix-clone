@@ -1,7 +1,8 @@
 import './globals.css'
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
-import {AuthProvider} from "@/hooks/useAuth";
+import {ReactNode} from "react";
+import MainRender from "@/components/MainRender";
 
 
 const inter = Inter({subsets: ['latin']})
@@ -11,14 +12,14 @@ export const metadata: Metadata = {
     description: 'Practice for Next.js',
 }
 
-export default function RootLayout({children}: { children: React.ReactNode }) {
-    return (
-        <html lang="en">
-        <body>
-        <AuthProvider>
+export default function RootLayout({ children }: {children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <MainRender>
             {children}
-        </AuthProvider>
-        </body>
-        </html>
-    )
+        </MainRender>
+      </body>
+    </html>
+  );
 }

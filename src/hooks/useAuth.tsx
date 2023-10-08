@@ -9,7 +9,7 @@ import {
 
 import {useRouter} from 'next/navigation'
 import {createContext, ReactNode, useContext, useEffect, useMemo, useState} from 'react'
-import {auth} from '@/app/firebase/init'
+import {auth} from '@/firebase/init'
 
 interface IAuth {
     user: User | null
