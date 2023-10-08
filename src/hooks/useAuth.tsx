@@ -45,11 +45,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
+
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/login");
-
+    router.push('/authentication')
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -60,8 +60,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setLoading(true);
         router.push("/login");
       }
-      setInitialLoading(false);
     });
+      setInitialLoading(false);
   }, [auth]);
 
   const signUp = async (email: string, password: string) => {
