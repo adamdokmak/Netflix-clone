@@ -48,7 +48,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState(null);
   const [loginLoading, setLoginLoading] = useRecoilState(errorState);
-  const [initialLoading, setInitialLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -62,7 +61,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setLoading(true);
         router.push("/login");
       }
-      setInitialLoading(false);
+      setLoading(false);
     });
   }, [auth]);
 
@@ -120,8 +119,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={memoedValue}>
-      {initialLoading && <AuthPage />}
-      {!initialLoading && children}
+      {loading ? <AuthPage /> : children}
     </AuthContext.Provider>
   );
 };
