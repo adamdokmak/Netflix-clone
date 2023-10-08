@@ -1,7 +1,14 @@
 import MuiModal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
 import { modalState, movieState } from "@/atoms/modalAtom";
-import { RecoilLoadable, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
+import {
+  collection,
+  onSnapshot,
+  doc,
+  deleteDoc,
+  setDoc,
+} from "@firebase/firestore";
 import {
   HandThumbUpIcon,
   PlusIcon,
@@ -9,10 +16,13 @@ import {
   SpeakerXMarkIcon,
   XMarkIcon,
 } from "@heroicons/react/20/solid";
-import { Element, Genre } from "@/utils/typings";
+import { Element, Genre, Movie } from "@/utils/typings";
 import ReactPlayer from "react-player/lazy";
 import { FaPlay } from "react-icons/fa";
-import loading = RecoilLoadable.loading;
+import useAuth from "@/hooks/useAuth";
+import { DocumentData } from "firebase/firestore";
+import { db } from "@/firebase/init";
+import { CheckmarkIcon } from "react-hot-toast";
 
 export default function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -21,6 +31,9 @@ export default function Modal() {
   const [genres, setGenres] = useState<Genre[]>([]);
   const [muted, setMuted] = useState(true);
   const [videoLoading, setVideoLoading] = useState(true);
+  const [addedToList, setAddedToList] = useState(false);
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     if (!movie) return;
@@ -48,9 +61,41 @@ export default function Modal() {
     fetchMovie();
   }, [movie]);
 
+  useEffect(() => {
+    if (user) {
+      return onSnapshot(
+        collection(db, "customers", user.uid, "myList"),
+        (snapshot) => {
+          setMovies(snapshot.docs);
+        },
+      );
+    }
+  }, [db, movie?.id]);
+
+  useEffect(
+    () =>
+      setAddedToList(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1,
+      ),
+    [movies],
+  );
+
+  const handleList = async () => {
+    if (addedToList) {
+      await deleteDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
+      );
+    } else {
+      await setDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
+        { ...movie },
+      );
+    }
+  };
+
   const handleClose = () => {
     setShowModal(false);
-    setVideoLoading(true)
+    setVideoLoading(true);
   };
 
   function semanticYear() {
@@ -79,18 +124,20 @@ export default function Modal() {
         </button>
 
         <div className="relative pt-[46.25%] overflow-hidden">
-          {videoLoading && <div className="absolute top-0 left-0 w-full h-full bg-[#181818]"></div>}
-            <ReactPlayer
-              className="scale-[1.35] -z-10 overflow-hidden"
-              url={`https://www.youtube-nocookie.com/watch?v=${trailer}`}
-              width="100%"
-              height="100%"
-              style={{ position: "absolute", top: "0", left: "0" }}
-              playing
-              loop
-              onReady={() => setVideoLoading(false)}
-              muted={muted}
-            />
+          {videoLoading && (
+            <div className="absolute top-0 left-0 w-full h-full bg-[#181818]"></div>
+          )}
+          <ReactPlayer
+            className="scale-[1.35] -z-10 overflow-hidden"
+            url={`https://www.youtube-nocookie.com/watch?v=${trailer}`}
+            width="100%"
+            height="100%"
+            style={{ position: "absolute", top: "0", left: "0" }}
+            playing
+            loop
+            onReady={() => setVideoLoading(false)}
+            muted={muted}
+          />
 
           <div
             className="absolute bottom-10 flex w-full items-center justify-between
@@ -104,11 +151,15 @@ export default function Modal() {
                 <FaPlay className="h-7 w-7 text-black" />
                 Play
               </button>
-              <button className="modalButton">
-                <PlusIcon className="w-8 h-8" />
+              <button className="modalButton" onClick={handleList}>
+                {!addedToList ? (
+                  <PlusIcon className="w-8 h-8 transition" />
+                ) : (
+                  <CheckmarkIcon className="w-8 h-8 text-white transition" />
+                )}
               </button>
               <button className="modalButton">
-                <HandThumbUpIcon className="w-5 h-5" />
+                  <HandThumbUpIcon className="w-5 h-5" />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
