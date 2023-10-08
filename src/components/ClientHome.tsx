@@ -8,13 +8,14 @@ import Modal from '@/components/Modal'
 import {Props} from "@/app/page";
 import useList from "@/hooks/useList";
 import useAuth from "@/hooks/useAuth";
+import AuthPage from "@/app/authentication/page";
 
 export default function ClientHome({getDataByFilters}: { getDataByFilters: Props }) {
     const showModal = useRecoilState(modalState)
     const {user} = useAuth()
     let list = useList(user?.uid)
 
-    return (
+    return !user ? <AuthPage /> : (
         <div className="relative h-screen bg-gradient-to-b from-gray-900/10
         to-[#010511] lg:h-[140vh]">
 
