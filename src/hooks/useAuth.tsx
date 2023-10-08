@@ -41,10 +41,9 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState(null);
-  const [initialLoading, setInitialLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -52,15 +51,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        setLoading(false);
         router.push("/");
       } else {
         setUser(null);
-        setLoading(true);
         router.push("/login");
       }
+        setLoading(false);
     });
-      setInitialLoading(false);
   }, [auth]);
 
   const signUp = async (email: string, password: string) => {
@@ -115,7 +112,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider value={memoedValue}>
-      {!initialLoading && children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };
