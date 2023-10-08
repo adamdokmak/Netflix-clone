@@ -61,8 +61,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, [auth]);
 
   const signUp = async (email: string, password: string) => {
-    setLoading(true);
-
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
@@ -74,8 +72,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const signIn = async (email: string, password: string) => {
-    setLoading(true);
-
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
@@ -87,8 +83,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = async () => {
-    setLoading(true);
-
+    router.push('/authentication')
     signOut(auth)
       .then(() => {
         setUser(null);
