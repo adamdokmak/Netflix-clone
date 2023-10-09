@@ -117,7 +117,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
                 router.push("/");
                 setLoading(false);
             })
-            .catch((error) => {
+            .catch(() => {
                 setLoginLoading(false);
                 handleSignInError()
             })

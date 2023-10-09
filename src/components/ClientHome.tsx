@@ -15,8 +15,7 @@ export default function ClientHome({getDataByFilters}: { getDataByFilters: Props
     const showModal = useRecoilState(modalState)
     const {user} = useAuth()
     let list = useList(user?.uid)
-    console.log(getDataByFilters)
-    return !user ? <AuthPage /> : (
+    return !user ? <div></div> : (
         <div className="relative h-screen bg-gradient-to-b from-gray-900/10
         to-[#010511] lg:h-[140vh]">
 
@@ -24,7 +23,6 @@ export default function ClientHome({getDataByFilters}: { getDataByFilters: Props
             <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-10'>
                 <Banner netflixOriginals={getDataByFilters.netflixOriginals}/>
                 <section className='md:space-y-24'>
-                    <Suspense>
                         <Row title="Trending Now" movies={getDataByFilters.trendingNow}/>
                         <Row title="Top Rated" movies={getDataByFilters.topRated}/>
                         <Row title="Action Thrillers" movies={getDataByFilters.actionMovies}/>
@@ -33,7 +31,6 @@ export default function ClientHome({getDataByFilters}: { getDataByFilters: Props
                         <Row title="Scary Movies" movies={getDataByFilters.horrorMovies}/>
                         <Row title="Romance Movies" movies={getDataByFilters.romanceMovies}/>
                         <Row title="Documentaries" movies={getDataByFilters.documentaries}/>
-                    </Suspense>
                 </section>
             </main>
             {showModal && <Modal/>}
