@@ -128,8 +128,8 @@ export default function Modal() {
             <div className="absolute top-0 left-0 w-full h-full bg-[#181818]"></div>
           )}
           <ReactPlayer
-            className="scale-[1.35] -z-10 overflow-hidden"
-            url={`https://www.youtube-nocookie.com/watch?v=${trailer}`}
+            className="scale-[1.55] md:scale-[1.35] -z-10 overflow-hidden"
+            url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
             height="100%"
             style={{ position: "absolute", top: "0", left: "0" }}
