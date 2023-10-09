@@ -1,6 +1,7 @@
 import requests from "@/utils/request";
 import {Movie} from "@/utils/typings";
 import ClientHome from "@/components/ClientHome";
+export const dynamic = 'force-dynamic'
 
 async function getAPI() {
     const [
