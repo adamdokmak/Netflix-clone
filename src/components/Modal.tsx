@@ -112,7 +112,7 @@ export default function Modal() {
     <MuiModal
       open={showModal}
       onClose={handleClose}
-      className="fixed !top-10 left-0 right-0 z-50 mx-auto w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-md scrollbar-hide"
+      className="fixed !top-10 left-0 right-0 z-50 mx-auto w-full max-w-5xl max-h-[90vh] overflow-x-scroll rounded-md scrollbar-hide"
     >
       <>
         <button
@@ -123,7 +123,7 @@ export default function Modal() {
           <XMarkIcon className="h-6 w-6" />
         </button>
 
-        <div className="relative pt-[46.25%] overflow-hidden">
+        <div className="relative pt-[46.25%]">
           {videoLoading && (
             <div className="absolute top-0 left-0 w-full h-full bg-[#181818]"></div>
           )}

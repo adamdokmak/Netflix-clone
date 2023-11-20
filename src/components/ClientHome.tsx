@@ -22,7 +22,7 @@ export default function ClientHome({getDataByFilters}: { getDataByFilters: Props
             <Header/>
             <main className='relative pl-4 pb-24 lg:space-y-24 lg:pl-10'>
                 <Banner netflixOriginals={getDataByFilters.netflixOriginals}/>
-                <section className='md:space-y-24'>
+                <section className='md:space-y-24 mx'>
                         <Row title="Trending Now" movies={getDataByFilters.trendingNow}/>
                         <Row title="Top Rated" movies={getDataByFilters.topRated}/>
                         <Row title="Action Thrillers" movies={getDataByFilters.actionMovies}/>
