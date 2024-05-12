@@ -4,9 +4,9 @@ import { modalState, movieState } from "@/atoms/modalAtom";
 import { useRecoilState } from "recoil";
 import {
   collection,
-  onSnapshot,
-  doc,
   deleteDoc,
+  doc,
+  onSnapshot,
   setDoc,
 } from "@firebase/firestore";
 import {
@@ -22,11 +22,11 @@ import { FaPlay } from "react-icons/fa";
 import useAuth from "@/hooks/useAuth";
 import { DocumentData } from "firebase/firestore";
 import { db } from "@/firebase/init";
-import { CheckmarkIcon } from "react-hot-toast";
+import { GrSubtract } from "react-icons/gr";
 
 export default function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
-  const [movie, setMovie] = useRecoilState(movieState);
+  const [movie, _] = useRecoilState(movieState);
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const [muted, setMuted] = useState(true);
@@ -58,7 +58,7 @@ export default function Modal() {
       }
     }
 
-    fetchMovie();
+    fetchMovie().then();
   }, [movie]);
 
   useEffect(() => {
@@ -70,14 +70,14 @@ export default function Modal() {
         },
       );
     }
-  }, [db, movie?.id]);
+  }, [movie?.id, user]);
 
   useEffect(
     () =>
       setAddedToList(
         movies.findIndex((result) => result.data().id === movie?.id) !== -1,
       ),
-    [movies],
+    [movie?.id, movies],
   );
 
   const handleList = async () => {
@@ -112,7 +112,7 @@ export default function Modal() {
     <MuiModal
       open={showModal}
       onClose={handleClose}
-      className="fixed !top-10 left-0 right-0 z-50 mx-auto w-full max-w-5xl max-h-[90vh] overflow-x-scroll rounded-md scrollbar-hide"
+      className="fixed !top-10 left-0 right-0 z-50 mx-auto max-h-[90vh] w-full max-w-5xl overflow-x-scroll rounded-md scrollbar-hide"
     >
       <>
         <button
@@ -125,10 +125,10 @@ export default function Modal() {
 
         <div className="relative pt-[46.25%]">
           {videoLoading && (
-            <div className="absolute top-0 left-0 w-full h-full bg-[#181818]"></div>
+            <div className="absolute left-0 top-0 h-full w-full bg-[#181818]"></div>
           )}
           <ReactPlayer
-            className="scale-[1.55] md:scale-[1.35] -z-10 overflow-hidden"
+            className="-z-10 scale-[1.55] overflow-hidden md:scale-[1.35]"
             url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
             height="100%"
@@ -145,7 +145,7 @@ export default function Modal() {
           >
             <div className="flex space-x-2">
               <button
-                className="flex items-center gap-x-2 rounded bg-white py-1 px-8 text-xl
+                className="flex items-center gap-x-2 rounded bg-white px-8 py-1 text-xl
                                 font-bold text-black transition hover:bg-[#e6e6e6]"
               >
                 <FaPlay className="h-7 w-7 text-black" />
@@ -153,28 +153,28 @@ export default function Modal() {
               </button>
               <button className="modalButton" onClick={handleList}>
                 {!addedToList ? (
-                  <PlusIcon className="w-8 h-8 transition" />
+                  <PlusIcon className="size-8 transition" />
                 ) : (
-                  <CheckmarkIcon className="w-8 h-8 text-white transition" />
+                  <GrSubtract className="size-6 text-white transition" />
                 )}
               </button>
               <button className="modalButton">
-                  <HandThumbUpIcon className="w-5 h-5" />
+                <HandThumbUpIcon className="h-5 w-5" />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
-                <SpeakerXMarkIcon className="w-7 h-7" />
+                <SpeakerXMarkIcon className="h-7 w-7" />
               ) : (
-                <SpeakerWaveIcon className="w-7 h-7" />
+                <SpeakerWaveIcon className="h-7 w-7" />
               )}
             </button>
           </div>
         </div>
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
           <div className="space-y-6 text-lg">
-            <div className="flex items-center content-center space-x-2 text-sm">
-              <h1 className="font-bold text-lg">
+            <div className="flex content-center items-center space-x-2 text-sm">
+              <h1 className="text-lg font-bold">
                 {movie?.title || movie?.name || movie?.original_name}
               </h1>
               <p className="font-semibold text-green-400">

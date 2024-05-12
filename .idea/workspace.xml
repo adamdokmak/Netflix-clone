@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b35d57e-2543-4213-b197-21b8b4c59b97" name="Changes" comment="bug fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/netflix-clone.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ClientHome.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ClientHome.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2WLGamJzy2t0ruQEzvfa9LA66jU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/adam/Desktop/Dev/netflix-clone/src/app/login",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
+    "ts.external.directory.path": "/Users/adam/Desktop/Dev/netflix-clone/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/login" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/app" />
+      <recent name="$PROJECT_DIR$/src/app/browse" />
+      <recent name="$PROJECT_DIR$/src/firebase" />
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-09665e90c3a7-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.15026.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b35d57e-2543-4213-b197-21b8b4c59b97" name="Changes" comment="" />
+      <created>1696504512508</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696504512508</updated>
+      <workItem from="1696504513597" duration="42721000" />
+      <workItem from="1696642325627" duration="87000" />
+      <workItem from="1696679054484" duration="6459000" />
+      <workItem from="1696688682719" duration="10044000" />
+      <workItem from="1696723187721" duration="20247000" />
+      <workItem from="1696774015403" duration="9991000" />
+      <workItem from="1696788457655" duration="467000" />
+      <workItem from="1696796510014" duration="603000" />
+      <workItem from="1696852059561" duration="8366000" />
+      <workItem from="1696958030898" duration="243000" />
+      <workItem from="1697995770450" duration="627000" />
+      <workItem from="1698421932100" duration="73000" />
+      <workItem from="1699285164368" duration="23000" />
+      <workItem from="1699285232376" duration="16000" />
+      <workItem from="1699373079274" duration="928000" />
+      <workItem from="1699393160902" duration="598000" />
+      <workItem from="1700516653265" duration="1559000" />
+      <workItem from="1701038637444" duration="498000" />
+      <workItem from="1701039145789" duration="598000" />
+      <workItem from="1701178996757" duration="125000" />
+      <workItem from="1701765477915" duration="19000" />
+      <workItem from="1701765599298" duration="14000" />
+      <workItem from="1702068475071" duration="1572000" />
+      <workItem from="1703099752942" duration="4000" />
+      <workItem from="1703167735347" duration="22000" />
+      <workItem from="1715454166795" duration="494000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit, nav bar, banner image and styling, filtered rows.">
+      <created>1696625223579</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696625223579</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixed styling issues">
+      <created>1696626223559</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696626223559</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added sign up, login, logout functions with firebase.">
+      <created>1696634572536</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696634572536</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed bugs.">
+      <created>1696684016692</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696684016692</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed bugs.">
+      <created>1696684524059</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696684524059</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed bugs, added modal for movies.">
+      <created>1696728663117</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696728663117</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added loading states, fixed overflow">
+      <created>1696732464898</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696732464898</updated>
+    </task>
+    <task id="LOCAL-00008" summary="authentication fixes &amp; SEO">
+      <created>1696733824532</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696733824532</updated>
+    </task>
+    <task id="LOCAL-00009" summary="optimized loading states">
+      <created>1696768703287</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696768703287</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added list functionality.">
+      <created>1696773754289</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696773754289</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed premature loading">
+      <created>1696774628144</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696774628145</updated>
+    </task>
+    <task id="LOCAL-00012" summary="loading bug fixes">
+      <created>1696778230495</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696778230495</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixed bugs">
+      <created>1696780984387</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696780984387</updated>
+    </task>
+    <task id="LOCAL-00014" summary="routing issues fixed">
+      <created>1696782932557</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696782932557</updated>
+    </task>
+    <task id="LOCAL-00015" summary="commit">
+      <created>1696783899816</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1696783899816</updated>
+    </task>
+    <task id="LOCAL-00016" summary="commit">
+      <created>1696784268346</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1696784268346</updated>
+    </task>
+    <task id="LOCAL-00017" summary="commit">
+      <created>1696785432946</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1696785432946</updated>
+    </task>
+    <task id="LOCAL-00018" summary="ui updates">
+      <created>1696859128418</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1696859128418</updated>
+    </task>
+    <task id="LOCAL-00019" summary="bug fixes">
+      <created>1696860427457</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1696860427457</updated>
+    </task>
+    <task id="LOCAL-00020" summary="bug fixes">
+      <option name="closed" value="true" />
+      <created>1700518140935</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1700518140935</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit, nav bar, banner image and styling, filtered rows." />
+    <MESSAGE value="fixed styling issues" />
+    <MESSAGE value="added sign up, login, logout functions with firebase." />
+    <MESSAGE value="fixed bugs." />
+    <MESSAGE value="fixed bugs, added modal for movies." />
+    <MESSAGE value="added loading states, fixed overflow" />
+    <MESSAGE value="authentication fixes &amp; SEO" />
+    <MESSAGE value="optimized loading states" />
+    <MESSAGE value="added list functionality." />
+    <MESSAGE value="fixed premature loading" />
+    <MESSAGE value="loading bug fixes" />
+    <MESSAGE value="fixed bugs" />
+    <MESSAGE value="routing issues fixed" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="ui updates" />
+    <MESSAGE value="bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
+  </component>
+</project>

@@ -1,7 +1,12 @@
-import {ImSpinner2} from "react-icons/im";
-
 export default function AuthPage() {
-    return (<div className='flex items-center justify-center w-screen h-screen bg-[#181818]'>
-        <ImSpinner2 className='w-[100px] h-[100px] text-red-500 animate-spin'/>
-    </div>)
+  return (
+    <div className="flex h-screen w-screen items-center justify-center bg-[#181818]">
+      <div
+        className=" size-24 animate-spin rounded-full border-8 border-red-600 border-e-transparent align-[-0.125em] "
+        role="status"
+      >
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  );
 }
