@@ -26,10 +26,10 @@ export default function Header() {
     <header className={`${isScrolled && "bg-[#141414]"}`}>
       <div className="flex items-center space-x-5 md:space-x-10">
         <Link href={"/home"}>
-          <NetflixLogo className="h-fit w-32 cursor-pointer object-contain" />
+          <NetflixLogo className="max-h-5 md:max-h-10 h-fit w-20 md:w-32 cursor-pointer object-contain" />
         </Link>
 
-        <ul className="flex space-x-2 md:space-x-4">
+        <ul className="flex justify-between gap-3 whitespace-nowrapw-full md:space-x-4">
           <Link href={"/home"} className="HeaderLink">
             Home
           </Link>
@@ -50,7 +50,7 @@ export default function Header() {
         <BellIcon className="h-6 w-6" />
         <img
           src="https://rb.gy/g1pwyx"
-          alt=""
+          alt="profile picture"
           className="cursor-pointer rounded "
           onClick={logout}
         />

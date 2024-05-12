@@ -112,7 +112,7 @@ export default function Modal() {
     <MuiModal
       open={showModal}
       onClose={handleClose}
-      className="fixed !top-10 left-0 right-0 z-50 mx-auto max-h-[90vh] w-full max-w-5xl overflow-x-scroll rounded-md scrollbar-hide"
+      className="fixed !top-10 left-0 right-0 z-50 mx-auto max-h-[90vh] overflow-y-scroll w-full max-w-5xl overflow-x-clip rounded-md scrollbar-hide"
     >
       <>
         <button
@@ -123,17 +123,18 @@ export default function Modal() {
           <XMarkIcon className="h-6 w-6" />
         </button>
 
-        <div className="relative pt-[46.25%]">
+        <div className="relative pt-[70%] md:pt-[55%]">
           {videoLoading && (
             <div className="absolute left-0 top-0 h-full w-full bg-[#181818]"></div>
           )}
           <ReactPlayer
-            className="-z-10 scale-[1.55] overflow-hidden md:scale-[1.35]"
+            className="-z-10 scale-[1.6] overflow-hidden md:scale-[1.35]"
             url={`https://www.youtube.com/watch?v=${trailer}`}
             width="100%"
             height="100%"
             style={{ position: "absolute", top: "0", left: "0" }}
             playing
+            controls={false}
             loop
             onReady={() => setVideoLoading(false)}
             muted={muted}
@@ -158,7 +159,7 @@ export default function Modal() {
                   <GrSubtract className="size-6 text-white transition" />
                 )}
               </button>
-              <button className="modalButton">
+              <button className="hidden sm:flex modalButton">
                 <HandThumbUpIcon className="h-5 w-5" />
               </button>
             </div>
@@ -189,7 +190,7 @@ export default function Modal() {
               </div>
             </div>
             <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
-              <p className="w-5/6">{movie?.overview}</p>
+              <p className="w-5/6 line-clamp-5 md:line-clamp-none">{movie?.overview}</p>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genre: </span>
