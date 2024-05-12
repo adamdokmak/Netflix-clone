@@ -24,16 +24,20 @@ export default function Thumbnail({ movie }: ThumbnailProps) {
         ease-out md:h-36 md:min-w-[260px] md:hover:scale-95"
     >
       {!imageLoaded && <ThumbnailFallback />}
-      <Image
-        onLoad={() => setImageLoaded(true)}
-        src={`https://image.tmdb.org/t/p/w500${
-          movie.backdrop_path || movie.poster_path
-        }`}
-        className="pointer-events-none rounded-sm object-cover md:rounded"
-        fill
-        sizes="(min-width: 768px) 50vw, 100vw"
-        alt="movie image"
-      />
+      {movie.backdrop_path && movie.poster_path !== "" ? (
+        <Image
+          onLoad={() => setImageLoaded(true)}
+          src={`https://image.tmdb.org/t/p/w500${
+            movie.backdrop_path || movie.poster_path
+          }`}
+          className="pointer-events-none rounded-sm object-cover md:rounded"
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          alt="movie image"
+        />
+      ) : (
+        <ThumbnailFallback />
+      )}
     </div>
   );
 }

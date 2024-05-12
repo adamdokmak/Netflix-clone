@@ -1,4 +1,4 @@
-import MuiModal from "@mui/material/Modal";
+'use client'
 import { useEffect, useState } from "react";
 import { modalState, movieState } from "@/atoms/modalAtom";
 import { useRecoilState } from "recoil";
@@ -23,6 +23,7 @@ import useAuth from "@/hooks/useAuth";
 import { DocumentData } from "firebase/firestore";
 import { db } from "@/firebase/init";
 import { GrSubtract } from "react-icons/gr";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -34,6 +35,33 @@ export default function Modal() {
   const [addedToList, setAddedToList] = useState(false);
   const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
   const { user } = useAuth();
+  const handleClose = () => {
+    setShowModal(false);
+    setVideoLoading(true);
+  };
+
+  function semanticYear() {
+    let year = movie?.first_air_date || movie?.release_date;
+    return year && year.slice(0, 4).replaceAll("-", " ");
+  }
+
+  function semanticOGLang() {
+    let language = movie?.original_language;
+    return language && language.toUpperCase();
+  }
+
+  const handleList = async () => {
+    if (addedToList) {
+      await deleteDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
+      );
+    } else {
+      await setDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
+        { ...movie },
+      );
+    }
+  };
 
   useEffect(() => {
     if (!movie) return;
@@ -80,47 +108,27 @@ export default function Modal() {
     [movie?.id, movies],
   );
 
-  const handleList = async () => {
-    if (addedToList) {
-      await deleteDoc(
-        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
-      );
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflowY = "hidden";
     } else {
-      await setDoc(
-        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
-        { ...movie },
-      );
+      document.body.style.overflowY = "scroll";
     }
-  };
-
-  const handleClose = () => {
-    setShowModal(false);
-    setVideoLoading(true);
-  };
-
-  function semanticYear() {
-    let year = movie?.first_air_date || movie?.release_date;
-    return year && year.slice(0, 4).replaceAll("-", " ");
-  }
-
-  function semanticOGLang() {
-    let language = movie?.original_language;
-    return language && language.toUpperCase();
-  }
+  }, [showModal]);
 
   return (
-    <MuiModal
-      open={showModal}
-      onClose={handleClose}
-      className="fixed !top-10 left-0 right-0 z-50 mx-auto max-h-[90vh] overflow-y-scroll w-full max-w-5xl overflow-x-clip rounded-md scrollbar-hide"
-    >
-      <>
+    <>
+      <div
+        onClick={handleClose}
+        className="fixed inset-0 z-40 h-screen w-screen bg-black/40"
+      />
+      <div className="fixed !top-10 left-0 right-0 z-50 mx-auto max-h-[90vh] w-full max-w-5xl overflow-x-clip overflow-y-scroll rounded-md transition-all duration-300 ease-in-out scrollbar-hide">
         <button
           onClick={handleClose}
           className="modalButton absolute right-5 top-5 !z-40 h-9
             w-9 border-none bg-[#181818] hover:bg-[#181818]"
         >
-          <XMarkIcon className="h-6 w-6" />
+          <XMarkIcon className="size-6" />
         </button>
 
         <div className="relative pt-[70%] md:pt-[55%]">
@@ -159,7 +167,7 @@ export default function Modal() {
                   <GrSubtract className="size-6 text-white transition" />
                 )}
               </button>
-              <button className="hidden sm:flex modalButton">
+              <button className="modalButton hidden sm:flex">
                 <HandThumbUpIcon className="h-5 w-5" />
               </button>
             </div>
@@ -190,7 +198,9 @@ export default function Modal() {
               </div>
             </div>
             <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
-              <p className="w-5/6 line-clamp-5 md:line-clamp-none">{movie?.overview}</p>
+              <p className="line-clamp-5 w-5/6 md:line-clamp-none">
+                {movie?.overview}
+              </p>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genre: </span>
@@ -204,7 +214,27 @@ export default function Modal() {
             </div>
           </div>
         </div>
-      </>
-    </MuiModal>
+      </div>
+    </>
+  );
+}
+
+export function ModalComponent() {
+  const [showModal] = useRecoilState(modalState);
+
+  return (
+    <AnimatePresence>
+      {showModal && (
+        <motion.div
+          key={showModal.toString()}
+          transition={{ duration: 0.2 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <Modal />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

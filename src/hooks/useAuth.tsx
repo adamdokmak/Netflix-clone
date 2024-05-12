@@ -54,7 +54,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         if (
           pathname !== "/home/tvshows" &&
           pathname !== "/home/movies" &&
-          pathname !== "/home/mylist"
+          pathname !== "/home/mylist" &&
+          pathname !== "/home/search"
         ) {
           loggedInOnce === "true" && router.push("/home");
         }
@@ -64,8 +65,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
       setAuthLoading(false);
     });
-    const timeoutId = setTimeout(() => setAuthLoading(false), 5000);
-    clearTimeout(timeoutId);
+    setTimeout(() => setAuthLoading(false), 5000);
   }, [authLoading, loggedInOnce, pathname, router]);
 
   const handleSignInError = () => {

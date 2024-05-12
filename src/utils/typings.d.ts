@@ -75,3 +75,7 @@ export type FilteredDataProps = {
   romanceMovies: Movie[];
   documentaries: Movie[];
 };
+
+export type SearchDataProps = {
+  searchedFor: Movie[] | Show[]
+};

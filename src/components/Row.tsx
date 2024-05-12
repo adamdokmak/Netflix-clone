@@ -1,5 +1,5 @@
 "use client";
-import { Movie } from "@/utils/typings";
+import { Movie, Show } from "@/utils/typings";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Thumbnail from "@/components/Thumbnail";
 import { useRef, useState } from "react";
@@ -7,7 +7,7 @@ import { DocumentData } from "firebase/firestore";
 
 type Props = {
   title: string;
-  movies: Movie[] | DocumentData[];
+  movies: Movie[] | Show[] | DocumentData[];
 };
 
 export default function Row({ title, movies }: Props) {

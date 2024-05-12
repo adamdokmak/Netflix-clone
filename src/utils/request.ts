@@ -31,6 +31,7 @@ const requests = {
     `${BASE_URL}/discover/tv?api_key=${API_KEY}&language=en-US&with_genres=10759&page=${Math.floor(Math.random() * (10 - 1) + 1)}`,
 };
 
+
 export async function fetchJSON(url: string) {
   const response = await fetch(url);
   return response.json();

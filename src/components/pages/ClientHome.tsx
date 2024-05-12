@@ -1,9 +1,7 @@
 "use client";
 import Banner from "@/components/Banner";
 import Row from "@/components/Row";
-import { useRecoilState } from "recoil";
-import { modalState } from "@/atoms/modalAtom";
-import Modal from "@/components/Modal";
+import { ModalComponent } from "@/components/Modal";
 import useList from "@/hooks/useList";
 import useAuth from "@/hooks/useAuth";
 import { FilteredDataProps, FilteredTVData } from "@/utils/typings";
@@ -13,17 +11,13 @@ export default function ClientHome({
 }: {
   getDataByFilters: FilteredDataProps & FilteredTVData;
 }) {
-  const showModal = useRecoilState(modalState);
   const { user } = useAuth();
   const list = useList(user?.uid);
   return !user ? (
     <div />
   ) : (
-    <div
-      className="relative h-[140svh] overflow-x-clip bg-gradient-to-b
-        from-gray-900/10 to-[#010511]"
-    >
-      <main className="relative pb-24 pl-4 lg:space-y-24 lg:pl-10">
+    <>
+      <section className="relative overflow-x-clip pb-24 pl-4 lg:space-y-24 lg:pl-10">
         <Banner netflixOriginals={getDataByFilters.netflixOriginals} />
         <section className="md:space-y-24">
           <Row title="Trending Now" movies={getDataByFilters.trendingNow} />
@@ -50,8 +44,8 @@ export default function ClientHome({
           <Row title="Drama Shows" movies={getDataByFilters.dramatv} />
           <Row title="Documentaries" movies={getDataByFilters.documentaries} />
         </section>
-      </main>
-      {showModal && <Modal />}
-    </div>
+      </section>
+      <ModalComponent />
+    </>
   );
 }
